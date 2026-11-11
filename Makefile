@@ -9,7 +9,11 @@ SRC = ft_printf.c /
           ft_putnbr.c /
           ft_format.c /
           ft_puthexadec.c /
-          ft_putstr.c 
+          ft_putstr.c /
+		  ft_strlen.c /
+		  ft_putchar.c /
+		  ft_putunsig.c /
+		  ft_putptr.c
 
 OBJS = ${SRC:.c=.o}
 

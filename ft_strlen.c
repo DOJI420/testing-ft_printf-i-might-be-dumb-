@@ -6,20 +6,20 @@
 /*   By: yibn-yah <yibn-yah@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 12:01:19 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/11 12:05:15 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/11 20:08:22 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-size_t ft_strlen(char *str)
+size_t      ft_strlen(char *str)
 {
-    size_t i;
+    size_t  len;
 
     i = 0;
-    while (str[i] != '\0')
+    while (str[len] != '\0')
     {
-        i++;
+        len++;
     }
-    return (i);
+    return (len);
 }
