@@ -3,5 +3,6 @@
 
 int main()
 {
-    printf("%x", 152);
+    int x = 1;
+    printf("%c", '-');
 }
