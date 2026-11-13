@@ -3,27 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_ptr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yibn-yah <yibn-yah@student.42.fr>          +#+  +:+       +#+        */
+/*   By: yibn-yah <yibn-yah@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 20:03:04 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/13 14:26:33 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/13 22:25:26 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include <stdio.h>
 
-int isptr_null(void *ptr ,int printed)
+static int isptr_null(void *ptr ,int printed)
 {
     if (ptr == NULL)
     {
-        write(1, "(nil)", 5);
-        printed = 5;
-        return (printed);
+        if (ptr == NULL)
+            return (write(1, "(nil)", 5));
     }
 }
 
-void converting(size_t convert, char arr[18], int count)
+static int converting(size_t convert, char arr[], int count)
 {
     char    *base;
     
@@ -32,7 +31,8 @@ void converting(size_t convert, char arr[18], int count)
     {
         arr[count++] = base[convert % 16];
         convert = convert / 16;
-    }    
+    }
+    return (count);
 }
 
 int ft_print_ptr(void *ptr)
@@ -43,11 +43,13 @@ int ft_print_ptr(void *ptr)
     size_t  convert;
 
     count = 0;
-    isptr_null(ptr, printed);
+    printed = 0;
+    if (ptr == NULL)
+        return (isptr_null(ptr, printed));
     convert = (size_t)ptr;
     if (convert == 0)
         arr[count++] = '0';
-    converting(convert, arr[18], count);
+    count = converting(convert, arr, count);
     arr[count++] = 'x';
     arr[count++] = '0';
     while (count > 0)
@@ -55,34 +57,80 @@ int ft_print_ptr(void *ptr)
     return (printed);
 }
 
-int main(void)
+#include <stdlib.h>
+#include <limits.h>
+
+int	main(void)
 {
-    int     a = 42;
-    char    b = 'A';
-    int     arr[5] = {1, 2, 3, 4, 5};
-    void    *ptr = &a;
+	int		a = 42;
+	char	b = 'A';
+	int		arr[5] = {1, 2, 3, 4, 5};
+	char	*str = "Hello";
+	void	*heap = malloc(10);
+	int		ret;
 
-    printf("Test 1:  Expected: %-20p | Mine: ", NULL);
-    ft_print_ptr(NULL);
-    printf("\n");
+	setbuf(stdout, NULL);
 
-    printf("Test 2:  Expected: %-20p | Mine: ", (void *)&a);
-    ft_print_ptr(&a);
-    printf("\n");
+	ret = ft_print_ptr(NULL);
+	printf(" | %d\n%p | 5\n-------------\n", ret, NULL);
 
-    printf("Test 3:  Expected: %-20p | Mine: ", (void *)&b);
-    ft_print_ptr(&b);
-    printf("\n");
+	ret = ft_print_ptr((void *)0);
+	printf(" | %d\n%p | 5\n-------------\n", ret, (void *)0);
 
-    printf("Test 4:  Expected: %-20p | Mine: ", (void *)arr);
-    ft_print_ptr(arr);
-    printf("\n");
+	ret = ft_print_ptr((void *)1);
+	printf(" | %d\n%p | 3\n-------------\n", ret, (void *)1);
 
-    printf("Test 5:  Expected: %-20p | Mine: ", (void *)&arr[0]);
-    ft_print_ptr(&arr[0]);
-    printf("\n");
+	ret = ft_print_ptr((void *)9);
+	printf(" | %d\n%p | 3\n-------------\n", ret, (void *)9);
 
-    printf("Test 6:  Expected: %-20p | Mine: ", (void *)&arr[4]);
-    ft_print_ptr(&arr[4]);
-    printf("\n");
+	ret = ft_print_ptr((void *)10);
+	printf(" | %d\n%p | 3\n-------------\n", ret, (void *)10);
+
+	ret = ft_print_ptr((void *)15);
+	printf(" | %d\n%p | 3\n-------------\n", ret, (void *)15);
+
+	ret = ft_print_ptr((void *)16);
+	printf(" | %d\n%p | 4\n-------------\n", ret, (void *)16);
+
+	ret = ft_print_ptr((void *)255);
+	printf(" | %d\n%p | 4\n-------------\n", ret, (void *)255);
+
+	ret = ft_print_ptr((void *)4096);
+	printf(" | %d\n%p | 6\n-------------\n", ret, (void *)4096);
+
+	ret = ft_print_ptr((void *)-1);
+	printf(" | %d\n%p | 18\n-------------\n", ret, (void *)-1);
+
+	ret = ft_print_ptr((void *)LONG_MAX);
+	printf(" | %d\n%p | 18\n-------------\n", ret, (void *)LONG_MAX);
+
+	ret = ft_print_ptr((void *)LONG_MIN);
+	printf(" | %d\n%p | 18\n-------------\n", ret, (void *)LONG_MIN);
+
+	ret = ft_print_ptr((void *)INT_MAX);
+	printf(" | %d\n%p | 10\n-------------\n", ret, (void *)INT_MAX);
+
+	ret = ft_print_ptr((void *)INT_MIN);
+	printf(" | %d\n%p | 18\n-------------\n", ret, (void *)INT_MIN);
+
+	ret = ft_print_ptr(&a);
+	printf(" | %d\n%p | 14\n-------------\n", ret, (void *)&a);
+
+	ret = ft_print_ptr(&b);
+	printf(" | %d\n%p | 14\n-------------\n", ret, (void *)&b);
+
+	ret = ft_print_ptr(arr);
+	printf(" | %d\n%p | 14\n-------------\n", ret, (void *)arr);
+
+	ret = ft_print_ptr(&arr[4]);
+	printf(" | %d\n%p | 14\n-------------\n", ret, (void *)&arr[4]);
+
+	ret = ft_print_ptr(str);
+	printf(" | %d\n%p | 14\n-------------\n", ret, (void *)str);
+
+	ret = ft_print_ptr(heap);
+	printf(" | %d\n%p | 14\n-------------\n", ret, heap);
+
+	free(heap);
+	return (0);
 }
