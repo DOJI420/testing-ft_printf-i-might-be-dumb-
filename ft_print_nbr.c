@@ -6,13 +6,13 @@
 /*   By: yibn-yah <yibn-yah@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 11:51:32 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/12 21:53:59 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/13 08:40:22 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void    ft_putnbr(int n)
+void    ft_print_nbr(int n)
 {
     if (n == -2147483648)
     {

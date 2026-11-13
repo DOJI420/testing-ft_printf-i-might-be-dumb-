@@ -6,7 +6,7 @@
 /*   By: yibn-yah <yibn-yah@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 20:02:53 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/12 22:42:33 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/13 09:51:14 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int    ft_print_unsigned(unsigned int num)
 {
-    char    temp;
     char    arr[10];
     int     printed;            
     int     count;
@@ -28,8 +27,7 @@ int    ft_print_unsigned(unsigned int num)
     }
     while (num > 0)
     {
-        temp = num % 10 + '0';
-        arr[count] = temp;
+        arr[count] = num % 10 + '0';
         num = num / 10;
         count++;
     }

@@ -3,6 +3,7 @@
 
 int main()
 {
-    int x = 1;
-    printf("%c", '-');
+    int x;
+
+    printf("%pX", &x);
 }

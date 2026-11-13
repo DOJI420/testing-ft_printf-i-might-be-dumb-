@@ -18,7 +18,7 @@
 # include <stdlib.h>
 
 void        ft_print_nbr(int n);
-void        ft_print_char(char c);
+int        ft_print_char(char c);
 int         ft_printf(const char *format, ...);
 
 #endif
