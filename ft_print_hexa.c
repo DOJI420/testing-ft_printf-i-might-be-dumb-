@@ -6,13 +6,13 @@
 /*   By: yibn-yah <yibn-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 19:44:06 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/13 11:43:49 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/14 10:54:26 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int ft_print_hexa(unsigned int  num, char format)
+int ft_print_hexa(unsigned int  num, const char *format)
 {
     char    *base;
     char    arr[11];
@@ -21,7 +21,7 @@ int ft_print_hexa(unsigned int  num, char format)
 
     printed = 0;
     count = 0;
-    if (format == 'X')
+    if (*format == 'X')
 		base = "0123456789ABCDEF";
 	else
 		base = "0123456789abcdef";
