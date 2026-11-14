@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yibn-yah <yibn-yah@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: yibn-yah <yibn-yah@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/11/11 20:01:39 by yibn-yah          #+#    #+#             */
-/*   Updated: 2026/11/12 22:33:18 by yibn-yah         ###   ########.fr       */
+/*   Updated: 2026/11/14 14:02:19 by yibn-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int    ft_print_char(char c)
+int	ft_print_char(char c)
 {
-    return (write(1, &c, 1));
+	return (write(1, &c, 1));
 }
